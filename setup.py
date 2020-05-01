@@ -84,7 +84,7 @@ setup(
     'pytz',
     'geocoder', 'geopy', 
     'numpy', 
-    'flask', 'flask_restplus', 'flask_cors',
+    'flask', 'flask_restx', 'flask_cors',
     'jsonpickle'
   ],
 

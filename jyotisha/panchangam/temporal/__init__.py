@@ -24,15 +24,21 @@ MAX_DAYS_PER_YEAR = 366
 MAX_SZ = MAX_DAYS_PER_YEAR + 6  # plus one and minus one are usually necessary
 MIN_DAYS_NEXT_ECLIPSE = 25
 TITHI = {'id': 'TITHI', 'arc_len': 360.0 / 30.0, 'w_moon': 1, 'w_sun': -1}
-TITHI_PADA = {'id': 'TITHI_PADA', 'arc_len': 360.0 / 120.0, 'w_moon': 1, 'w_sun': -1}
-NAKSHATRAM = {'id': 'NAKSHATRAM', 'arc_len': 360.0 / 27.0, 'w_moon': 1, 'w_sun': 0}
-NAKSHATRA_PADA = {'id': 'NAKSHATRA_PADA', 'arc_len': 360.0 / 108.0, 'w_moon': 1, 'w_sun': 0}
+TITHI_PADA = {'id': 'TITHI_PADA', 'arc_len': 360.0 /
+              120.0, 'w_moon': 1, 'w_sun': -1}
+NAKSHATRAM = {'id': 'NAKSHATRAM',
+              'arc_len': 360.0 / 27.0, 'w_moon': 1, 'w_sun': 0}
+NAKSHATRA_PADA = {'id': 'NAKSHATRA_PADA',
+                  'arc_len': 360.0 / 108.0, 'w_moon': 1, 'w_sun': 0}
 RASHI = {'id': 'RASHI', 'arc_len': 360.0 / 12.0, 'w_moon': 1, 'w_sun': 0}
 YOGA = {'id': 'YOGA', 'arc_len': 360.0 / 27.0, 'w_moon': 1, 'w_sun': 1}
 KARANAM = {'id': 'KARANAM', 'arc_len': 360.0 / 60.0, 'w_moon': 1, 'w_sun': -1}
-SOLAR_MONTH = {'id': 'SOLAR_MONTH', 'arc_len': 360.0 / 12.0, 'w_moon': 0, 'w_sun': 1}
-SOLAR_NAKSH = {'id': 'SOLAR_NAKSH', 'arc_len': 360.0 / 27.0, 'w_moon': 0, 'w_sun': 1}
-SOLAR_NAKSH_PADA = {'id': 'SOLAR_NAKSH_PADA', 'arc_len': 360.0 / 108.0, 'w_moon': 0, 'w_sun': 1}
+SOLAR_MONTH = {'id': 'SOLAR_MONTH',
+               'arc_len': 360.0 / 12.0, 'w_moon': 0, 'w_sun': 1}
+SOLAR_NAKSH = {'id': 'SOLAR_NAKSH',
+               'arc_len': 360.0 / 27.0, 'w_moon': 0, 'w_sun': 1}
+SOLAR_NAKSH_PADA = {'id': 'SOLAR_NAKSH_PADA',
+                    'arc_len': 360.0 / 108.0, 'w_moon': 0, 'w_sun': 1}
 TYAJYAM_SPANS_REL = [51, 25, 31, 41, 15, 22, 31, 21, 33,
                      31, 21, 19, 22, 21, 15, 15, 11, 15,
                      57, 25, 21, 11, 11, 19, 17, 25, 31]
@@ -40,15 +46,21 @@ AMRITA_SPANS_REL = [43, 49, 55, 53, 39, 36, 55, 45, 57,
                     55, 45, 43, 46, 45, 39, 39, 35, 39,
                     45, 49, 45, 35, 35, 43, 41, 49, 55]
 AMRITADI_YOGA = [[None, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 0, 0, 1, 1, 2, 2, 2, 0, 1, 0, 0, 2, 1, 1, 0, 0],
-                 [None, 1, 1, 2, 0, 0, 1, 0, 1, 1, 2, 1, 1, 1, 1, 0, 2, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1],
-                 [None, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 0, 1, 1, 1, 2, 1, 1, 0, 1, 1, 1, 1, 2, 2, 0, 1],
-                 [None, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2, 1, 1, 1, 1, 1, 2, 0, 0, 1, 2, 1, 0, 1, 2],
-                 [None, 0, 1, 2, 2, 2, 2, 0, 0, 1, 0, 1, 2, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1],
-                 [None, 0, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 0, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1, 1, 1, 0],
+                 [None, 1, 1, 2, 0, 0, 1, 0, 1, 1, 2, 1, 1, 1,
+                     1, 0, 2, 1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1],
+                 [None, 1, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 0, 1,
+                     1, 1, 2, 1, 1, 0, 1, 1, 1, 1, 2, 2, 0, 1],
+                 [None, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 2,
+                     1, 1, 1, 1, 1, 2, 0, 0, 1, 2, 1, 0, 1, 2],
+                 [None, 0, 1, 2, 2, 2, 2, 0, 0, 1, 0, 1, 2, 1,
+                     1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1],
+                 [None, 0, 1, 1, 2, 1, 1, 1, 2, 2, 2, 1, 1, 0,
+                     1, 1, 1, 1, 2, 0, 1, 1, 2, 1, 1, 1, 1, 0],
                  [None, 1, 1, 0, 0, 1, 1, 1, 1, 2, 0, 1, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 2, 1, 2]]
 AMRITADI_YOGA_NAMES = {1: 'siddha', 0: 'amRta', 2: 'maraNa'}
 for i in range(7):
-  AMRITADI_YOGA[i] = [AMRITADI_YOGA_NAMES.get(n, n) for n in AMRITADI_YOGA[i]]
+    AMRITADI_YOGA[i] = [AMRITADI_YOGA_NAMES.get(
+        n, n) for n in AMRITADI_YOGA[i]]
 
 
 class Time(JsonObject):
@@ -65,61 +77,61 @@ class Time(JsonObject):
 
     def toString(self, default_suffix='', format='hh:mm', rounding=False):
         if self.t < 0:
-          logging.error('t<0! %s ' % self.t)
-          logging.error(traceback.print_stack())
+            logging.error('t<0! %s ' % self.t)
+            logging.error(traceback.print_stack())
 
         msec, secs = modf(self.t * 3600)
         msec = round(msec * 1000)
         if msec == 1000:
-          msec = 0
-          secs += 1
+            msec = 0
+            secs += 1
 
         hour = secs // 3600
         secs = secs % 3600
 
         suffix = default_suffix
         if format[-1] == '*':
-          if hour >= 24:
-              suffix = '*'
+            if hour >= 24:
+                suffix = '*'
         else:
-          if hour >= 24:
-              hour -= 24
-              suffix = '(+1)'  # Default notation for times > 23:59
+            if hour >= 24:
+                hour -= 24
+                suffix = '(+1)'  # Default notation for times > 23:59
 
         minute = secs // 60
         secs = secs % 60
         second = secs
 
         if format in ('hh:mm', 'hh:mm*'):
-          # Rounding done if 30 seconds have elapsed
-          return '%02d:%02d%s' % (hour, minute + ((secs + (msec >= 500)) >= 30) * rounding, suffix)
+            # Rounding done if 30 seconds have elapsed
+            return '%02d:%02d%s' % (hour, minute + ((secs + (msec >= 500)) >= 30) * rounding, suffix)
         elif format in ('hh:mm:ss', 'hh:mm:ss*'):
-          # Rounding done if 500 milliseconds have elapsed
-          return '%02d:%02d:%02d%s' % (hour, minute, second + (msec >= 500) * rounding, suffix)
+            # Rounding done if 500 milliseconds have elapsed
+            return '%02d:%02d:%02d%s' % (hour, minute, second + (msec >= 500) * rounding, suffix)
         elif format in ('hh:mm:ss.sss', 'hh:mm:ss.sss*'):
-          return '%02d:%02d:%02d.%03d%s' % (hour, minute, second, msec, suffix)
+            return '%02d:%02d:%02d.%03d%s' % (hour, minute, second, msec, suffix)
         elif format == 'gg-pp':  # ghatika-pal
-          secs = round(self.t * 3600)
-          gg = secs // 1440
-          secs = secs % 1440
-          pp = secs // 24
-          return ('%d-%d' % (gg, pp))
+            secs = round(self.t * 3600)
+            gg = secs // 1440
+            secs = secs % 1440
+            pp = secs // 24
+            return ('%d-%d' % (gg, pp))
         elif format == 'gg-pp-vv':  # ghatika-pal-vipal
-          vv_tot = round(self.t * 3600 / 0.4)
-          logging.debug(vv_tot)
-          vv = vv_tot % 60
-          logging.debug(vv)
-          vv_tot = (vv_tot - vv) // 60
-          logging.debug(vv_tot)
-          pp = vv_tot % 60
-          logging.debug(pp)
-          vv_tot = (vv_tot - pp) // 60
-          logging.debug(vv_tot)
-          gg = vv_tot
-          logging.debug(gg)
-          return ('%d-%d-%d' % (gg, pp, vv))
+            vv_tot = round(self.t * 3600 / 0.4)
+            logging.debug(vv_tot)
+            vv = vv_tot % 60
+            logging.debug(vv)
+            vv_tot = (vv_tot - vv) // 60
+            logging.debug(vv_tot)
+            pp = vv_tot % 60
+            logging.debug(pp)
+            vv_tot = (vv_tot - pp) // 60
+            logging.debug(vv_tot)
+            gg = vv_tot
+            logging.debug(gg)
+            return ('%d-%d-%d' % (gg, pp, vv))
         else:
-          raise Exception("""Unknown format""")
+            raise Exception("""Unknown format""")
 
     def __str__(self):
         return self.toString(format='hh:mm:ss')
@@ -216,15 +228,16 @@ def get_angam_float(jd, angam_type, offset=0, ayanamsha_id=swe.SIDM_LAHIRI, debu
 
     #  Get the lunar longitude, starting at the ayanaamsha point in the ecliptic.
     if w_moon != 0:
-        lmoon = (swe.calc_ut(jd, swe.MOON)[0] - swe.get_ayanamsa(jd)) % 360
+        lmoon = (swe.calc_ut(jd, swe.MOON)[0][0] - swe.get_ayanamsa(jd)) % 360
         if (debug):
-            logging.debug("Moon longitude: %f", swe.calc_ut(jd, swe.MOON)[0])
+            logging.debug("Moon longitude: %f",
+                          swe.calc_ut(jd, swe.MOON)[0][0])
             logging.debug('## get_angam_float(): lmoon=%f', lmoon)
         lcalc += w_moon * lmoon
 
     #  Get the solar longitude, starting at the ayanaamsha point in the ecliptic.
     if w_sun != 0:
-        lsun = (swe.calc_ut(jd, swe.SUN)[0] - swe.get_ayanamsa(jd)) % 360
+        lsun = (swe.calc_ut(jd, swe.SUN)[0][0] - swe.get_ayanamsa(jd)) % 360
         if(debug):
             logging.debug('## get_angam_float(): lsun=%f', lsun)
         lcalc += w_sun * lsun
@@ -328,25 +341,29 @@ def get_angam(jd, angam_type, ayanamsha_id=swe.SIDM_LAHIRI):
 
 
 def get_all_angas(jd, ayanamsha_id=swe.SIDM_LAHIRI):
-  anga_objects = [TITHI, TITHI_PADA, NAKSHATRAM, NAKSHATRA_PADA, RASHI, SOLAR_MONTH, SOLAR_NAKSH, YOGA, KARANAM]
-  angas = list(map(lambda anga_object: get_angam(jd=jd, angam_type=anga_object, ayanamsha_id=ayanamsha_id), anga_objects))
-  anga_ids = list(map(lambda anga_obj: anga_obj["id"], anga_objects))
-  return dict(list(zip(anga_ids, angas)))
+    anga_objects = [TITHI, TITHI_PADA, NAKSHATRAM, NAKSHATRA_PADA,
+                    RASHI, SOLAR_MONTH, SOLAR_NAKSH, YOGA, KARANAM]
+    angas = list(map(lambda anga_object: get_angam(
+        jd=jd, angam_type=anga_object, ayanamsha_id=ayanamsha_id), anga_objects))
+    anga_ids = list(map(lambda anga_obj: anga_obj["id"], anga_objects))
+    return dict(list(zip(anga_ids, angas)))
 
 
 def get_all_angas_x_ayanamshas(jd):
-  # swe.SIDM_TRUE_REVATI leads to a segfault.
-  ayanamshas = [swe.SIDM_LAHIRI, swe.SIDM_ARYABHATA, swe.SIDM_ARYABHATA_MSUN, swe.SIDM_KRISHNAMURTI, swe.SIDM_JN_BHASIN, swe.SIDM_RAMAN, swe.SIDM_SS_CITRA, swe.SIDM_SS_REVATI, swe.SIDM_SURYASIDDHANTA, swe.SIDM_SURYASIDDHANTA_MSUN, swe.SIDM_USHASHASHI, swe.SIDM_YUKTESHWAR, swe.SIDM_TRUE_CITRA, names.SIDM_TRUE_MULA, names.SIDM_TRUE_PUSHYA]
+    # swe.SIDM_TRUE_REVATI leads to a segfault.
+    ayanamshas = [swe.SIDM_LAHIRI, swe.SIDM_ARYABHATA, swe.SIDM_ARYABHATA_MSUN, swe.SIDM_KRISHNAMURTI, swe.SIDM_JN_BHASIN, swe.SIDM_RAMAN, swe.SIDM_SS_CITRA, swe.SIDM_SS_REVATI,
+                  swe.SIDM_SURYASIDDHANTA, swe.SIDM_SURYASIDDHANTA_MSUN, swe.SIDM_USHASHASHI, swe.SIDM_YUKTESHWAR, swe.SIDM_TRUE_CITRA, names.SIDM_TRUE_MULA, names.SIDM_TRUE_PUSHYA]
 
-  ayanamsha_names = list(map(lambda ayanamsha: names.get_ayanamsha_name(ayanamsha), ayanamshas))
-  return dict(zip(ayanamsha_names, map(lambda ayanamsha_id: get_all_angas(jd=jd, ayanamsha_id=ayanamsha_id), ayanamshas)))
+    ayanamsha_names = list(
+        map(lambda ayanamsha: names.get_ayanamsha_name(ayanamsha), ayanamshas))
+    return dict(zip(ayanamsha_names, map(lambda ayanamsha_id: get_all_angas(jd=jd, ayanamsha_id=ayanamsha_id), ayanamshas)))
 
 
 def print_angas_x_ayanamshas(jd):
-  anga_x_ayanamsha = get_all_angas_x_ayanamshas(jd=jd)
-  import pandas
-  angas_df = pandas.DataFrame(anga_x_ayanamsha)
-  print(angas_df.to_csv(sep="\t"))
+    anga_x_ayanamsha = get_all_angas_x_ayanamshas(jd=jd)
+    import pandas
+    angas_df = pandas.DataFrame(anga_x_ayanamsha)
+    print(angas_df.to_csv(sep="\t"))
 
 
 def get_angam_span(jd1, jd2, angam_type, target, ayanamsha_id=swe.SIDM_LAHIRI, debug=False):
@@ -365,8 +382,8 @@ def get_angam_span(jd1, jd2, angam_type, target, ayanamsha_id=swe.SIDM_LAHIRI, d
     angam_start = angam_end = None
 
     if debug:
-      logging.debug(get_angam(jd1, angam_type, ayanamsha_id=ayanamsha_id))
-      logging.debug(get_angam(jd2, angam_type, ayanamsha_id=ayanamsha_id))
+        logging.debug(get_angam(jd1, angam_type, ayanamsha_id=ayanamsha_id))
+        logging.debug(get_angam(jd2, angam_type, ayanamsha_id=ayanamsha_id))
 
     num_angas = int(360.0 / angam_type['arc_len'])
 
@@ -380,18 +397,20 @@ def get_angam_span(jd1, jd2, angam_type, target, ayanamsha_id=swe.SIDM_LAHIRI, d
         angam_now = get_angam(jd_now, angam_type, ayanamsha_id=ayanamsha_id)
 
         if debug:
-            logging.debug((jd_now, revjul(jd_now), angam_now, get_angam_float(jd_now, angam_type, ayanamsha_id=ayanamsha_id)))
+            logging.debug((jd_now, revjul(jd_now), angam_now, get_angam_float(
+                jd_now, angam_type, ayanamsha_id=ayanamsha_id)))
         if angam_now < target or (target == 1 and angam_now == num_angas):
             if debug:
                 logging.debug(('jd_bracket_L ', jd_now))
             jd_bracket_L = jd_now
         if angam_now == target:
             try:
-              angam_start = brentq(get_angam_float, jd_bracket_L, jd_now,
-                                   args=(angam_type, -target + 1, ayanamsha_id, False))
+                angam_start = brentq(get_angam_float, jd_bracket_L, jd_now,
+                                     args=(angam_type, -target + 1, ayanamsha_id, False))
             except ValueError:
-              logging.error('Unable to bracket %s->%f between jd = (%f, %f), starting with (%f, %f)' % (str(angam_type), -target + 1, jd_bracket_L, jd_now, jd1, jd2))
-              angam_start = None
+                logging.error('Unable to bracket %s->%f between jd = (%f, %f), starting with (%f, %f)' %
+                              (str(angam_type), -target + 1, jd_bracket_L, jd_now, jd1, jd2))
+                angam_start = None
             if debug:
                 logging.debug(('angam_start', angam_start))
         # if angam_now > target and angam_start is not None:
@@ -407,7 +426,8 @@ def get_angam_span(jd1, jd2, angam_type, target, ayanamsha_id=swe.SIDM_LAHIRI, d
         angam_now = get_angam(jd_now, angam_type, ayanamsha_id=ayanamsha_id)
 
         if debug:
-            logging.debug((jd_now, revjul(jd_now), angam_now, get_angam_float(jd_now, angam_type, ayanamsha_id=ayanamsha_id)))
+            logging.debug((jd_now, revjul(jd_now), angam_now, get_angam_float(
+                jd_now, angam_type, ayanamsha_id=ayanamsha_id)))
         if target == num_angas:
             # Wait till we land at the next anga!
             if angam_now == 1:
@@ -427,7 +447,8 @@ def get_angam_span(jd1, jd2, angam_type, target, ayanamsha_id=swe.SIDM_LAHIRI, d
         angam_end = brentq(get_angam_float, angam_start, jd_bracket_R,
                            args=(angam_type, -target, ayanamsha_id, False))
     except ValueError:
-        logging.error('Unable to compute angam_end (%s->%d); possibly could not bracket correctly!\n' % (str(angam_type), target))
+        logging.error('Unable to compute angam_end (%s->%d); possibly could not bracket correctly!\n' %
+                      (str(angam_type), target))
 
     if debug:
         logging.debug(('angam_end', angam_end))
@@ -469,7 +490,8 @@ def get_angam_data(jd_sunrise, jd_sunrise_tmrw, angam_type, ayanamsha_id=swe.SID
 
     # Compute angam details
     angam_now = get_angam(jd_sunrise, angam_type, ayanamsha_id=ayanamsha_id)
-    angam_tmrw = get_angam(jd_sunrise_tmrw, angam_type, ayanamsha_id=ayanamsha_id)
+    angam_tmrw = get_angam(jd_sunrise_tmrw, angam_type,
+                           ayanamsha_id=ayanamsha_id)
 
     angams_list = []
 
@@ -479,14 +501,16 @@ def get_angam_data(jd_sunrise, jd_sunrise_tmrw, angam_type, ayanamsha_id=swe.SID
         # The angam does not change until sunrise tomorrow
         return [(angam_now, None)]
     else:
-        lmoon = (swe.calc_ut(jd_sunrise, swe.MOON)[0] - swe.get_ayanamsa(jd_sunrise)) % 360
+        lmoon = (swe.calc_ut(jd_sunrise, swe.MOON)[
+                 0][0] - swe.get_ayanamsa(jd_sunrise)) % 360
 
-        lsun = (swe.calc_ut(jd_sunrise, swe.SUN)[0] - swe.get_ayanamsa(jd_sunrise)) % 360
+        lsun = (swe.calc_ut(jd_sunrise, swe.SUN)[
+                0][0] - swe.get_ayanamsa(jd_sunrise)) % 360
 
-        lmoon_tmrw = (swe.calc_ut(jd_sunrise_tmrw, swe.MOON)[0] -
+        lmoon_tmrw = (swe.calc_ut(jd_sunrise_tmrw, swe.MOON)[0][0] -
                       swe.get_ayanamsa(jd_sunrise_tmrw)) % 360
 
-        lsun_tmrw = (swe.calc_ut(jd_sunrise_tmrw, swe.SUN)[0] -
+        lsun_tmrw = (swe.calc_ut(jd_sunrise_tmrw, swe.SUN)[0][0] -
                      swe.get_ayanamsa(jd_sunrise_tmrw)) % 360
 
         for i in range(num_angas_today):
@@ -519,12 +543,13 @@ def get_angam_data(jd_sunrise, jd_sunrise_tmrw, angam_type, ayanamsha_id=swe.SID
             # used to bracket the root, for brenth
             TDELTA = 0.05
             try:
-              t_act = brentq(get_angam_float, x0 - TDELTA, x0 + TDELTA,
-                             args=(angam_type, -target, ayanamsha_id, False))
+                t_act = brentq(get_angam_float, x0 - TDELTA, x0 + TDELTA,
+                               args=(angam_type, -target, ayanamsha_id, False))
             except ValueError:
-              logging.warning('Unable to bracket! Using approximate t_end itself.')
-              logging.warning(locals())
-              t_act = approx_end
+                logging.warning(
+                    'Unable to bracket! Using approximate t_end itself.')
+                logging.warning(locals())
+                t_act = approx_end
             angams_list.extend([((angam_now + i - 1) % num_angas + 1, t_act)])
     return angams_list
 
@@ -548,15 +573,15 @@ def get_ekadashi_name(paksha, lmonth):
 
 def get_chandra_masa(month, NAMES, script, visarga=True):
     if visarga:
-      if month == int(month):
-          return NAMES['CHANDRA_MASA_NAMES'][script][month]
-      else:
-          return '%s-(%s)' % (NAMES['CHANDRA_MASA_NAMES'][script][int(month) + 1], tr('adhikaH', script, titled=False))
+        if month == int(month):
+            return NAMES['CHANDRA_MASA_NAMES'][script][month]
+        else:
+            return '%s-(%s)' % (NAMES['CHANDRA_MASA_NAMES'][script][int(month) + 1], tr('adhikaH', script, titled=False))
     else:
-      if month == int(month):
-          return NAMES['CHANDRA_MASA_NAMES'][script][month][:-1]
-      else:
-          return '%s-(%s)' % (NAMES['CHANDRA_MASA_NAMES'][script][int(month) + 1][:-1], tr('adhika', script, titled=False))
+        if month == int(month):
+            return NAMES['CHANDRA_MASA_NAMES'][script][month][:-1]
+        else:
+            return '%s-(%s)' % (NAMES['CHANDRA_MASA_NAMES'][script][int(month) + 1][:-1], tr('adhika', script, titled=False))
 
 
 def get_tithi(jd, ayanamsha_id=swe.SIDM_LAHIRI):
@@ -607,7 +632,8 @@ def get_kaalas(start_span, end_span, part_start, num_parts):
 
 
 def sanitize_time(year_in, month_in, day_in, hour_in, minute_in, second_in):
-    (year, month, day, hour, minute, second) = (year_in, month_in, day_in, hour_in, minute_in, second_in)
+    (year, month, day, hour, minute, second) = (
+        year_in, month_in, day_in, hour_in, minute_in, second_in)
     if second >= 60:
         minute = minute + second / 60
         second = second % 60

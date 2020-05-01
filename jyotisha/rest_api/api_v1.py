@@ -1,10 +1,10 @@
 import logging
 import swisseph as swe
 
-import flask_restplus
+import flask_restx
 from flask import Blueprint
-from flask_restplus import Resource
-from flask_restplus import reqparse
+from flask_restx import Resource
+from flask_restx import reqparse
 
 import jyotisha.panchangam.spatio_temporal.annual
 import jyotisha.panchangam.spatio_temporal.daily
@@ -23,7 +23,7 @@ api_blueprint = Blueprint(
   template_folder='templates'
 )
 
-api = flask_restplus.Api(app=api_blueprint, version='1.0', title='jyotisha panchanga API',
+api = flask_restx.Api(app=api_blueprint, version='1.0', title='jyotisha panchanga API',
                          description='For detailed intro and to report issues: see <a href="https://github.com/sanskrit-coders/jyotisha">here</a>. '
                                      'A list of REST and non-REST API routes avalilable on this server: <a href="../sitemap">sitemap</a>.',
                          default_label=api_blueprint.name,

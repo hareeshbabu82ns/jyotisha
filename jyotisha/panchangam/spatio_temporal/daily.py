@@ -24,7 +24,8 @@ class DailyPanchanga(common.JsonObject):
       """
     @classmethod
     def from_city_and_julian_day(cls, city, julian_day, ayanamsha_id=swe.SIDM_LAHIRI):
-        (year, month, day, hours, minutes, seconds) = city.julian_day_to_local_time(julian_day)
+        (year, month, day, hours, minutes,
+         seconds) = city.julian_day_to_local_time(julian_day)
         return DailyPanchanga(city=city, year=year, month=month, day=day, ayanamsha_id=ayanamsha_id)
 
     def __init__(self, city: City, year: int, month: int, day: int, ayanamsha_id: int = swe.SIDM_LAHIRI, previous_day_panchangam=None) -> None:
@@ -33,9 +34,11 @@ class DailyPanchanga(common.JsonObject):
         super(DailyPanchanga, self).__init__()
         self.city = city
         (self.year, self.month, self.day) = (year, month, day)
-        self.julian_day_start = self.city.local_time_to_julian_day(year=self.year, month=self.month, day=self.day, hours=0, minutes=0, seconds=0)
+        self.julian_day_start = self.city.local_time_to_julian_day(
+            year=self.year, month=self.month, day=self.day, hours=0, minutes=0, seconds=0)
 
-        self.weekday = datetime.date(year=self.year, month=self.month, day=self.day).isoweekday() % 7
+        self.weekday = datetime.date(
+            year=self.year, month=self.month, day=self.day).isoweekday() % 7
         self.ayanamsha_id = ayanamsha_id
         swe.set_sid_mode(ayanamsha_id)
 
@@ -45,7 +48,8 @@ class DailyPanchanga(common.JsonObject):
         self.jd_next_sunrise = None
         self.jd_moonrise = None
         self.jd_moonset = None
-        self.compute_sun_moon_transitions(previous_day_panchangam=previous_day_panchangam)
+        self.compute_sun_moon_transitions(
+            previous_day_panchangam=previous_day_panchangam)
 
         self.tb_muhuurtas = None
         self.lagna_data = None
@@ -117,25 +121,34 @@ class DailyPanchanga(common.JsonObject):
                 lon=self.city.longitude, lat=self.city.latitude,
                 rsmi=CALC_SET)[1][0]
 
-        self.tithi_data = temporal.get_angam_data(self.jd_sunrise, self.jd_next_sunrise, temporal.TITHI, ayanamsha_id=self.ayanamsha_id)
+        self.tithi_data = temporal.get_angam_data(
+            self.jd_sunrise, self.jd_next_sunrise, temporal.TITHI, ayanamsha_id=self.ayanamsha_id)
         self.tithi_at_sunrise = self.tithi_data[0][0]
-        self.nakshatram_data = temporal.get_angam_data(self.jd_sunrise, self.jd_next_sunrise, temporal.NAKSHATRAM, ayanamsha_id=self.ayanamsha_id)
+        self.nakshatram_data = temporal.get_angam_data(
+            self.jd_sunrise, self.jd_next_sunrise, temporal.NAKSHATRAM, ayanamsha_id=self.ayanamsha_id)
         self.nakshatram_at_sunrise = self.nakshatram_data[0][0]
-        self.yoga_data = temporal.get_angam_data(self.jd_sunrise, self.jd_next_sunrise, temporal.YOGA, ayanamsha_id=self.ayanamsha_id)
+        self.yoga_data = temporal.get_angam_data(
+            self.jd_sunrise, self.jd_next_sunrise, temporal.YOGA, ayanamsha_id=self.ayanamsha_id)
         self.yoga_at_sunrise = self.yoga_data[0][0]
-        self.karanam_data = temporal.get_angam_data(self.jd_sunrise, self.jd_next_sunrise, temporal.KARANAM, ayanamsha_id=self.ayanamsha_id)
-        self.rashi_data = temporal.get_angam_data(self.jd_sunrise, self.jd_next_sunrise, temporal.RASHI, ayanamsha_id=self.ayanamsha_id)
+        self.karanam_data = temporal.get_angam_data(
+            self.jd_sunrise, self.jd_next_sunrise, temporal.KARANAM, ayanamsha_id=self.ayanamsha_id)
+        self.rashi_data = temporal.get_angam_data(
+            self.jd_sunrise, self.jd_next_sunrise, temporal.RASHI, ayanamsha_id=self.ayanamsha_id)
 
     def compute_solar_month(self):
         if not hasattr(self, "jd_sunrise") or self.jd_sunrise is None:
             self.compute_sun_moon_transitions()
         swe.set_sid_mode(self.ayanamsha_id)
-        self.longitude_sun_sunrise = swe.calc_ut(self.jd_sunrise, swe.SUN)[0] - swe.get_ayanamsa(self.jd_sunrise)
-        self.longitude_sun_sunset = swe.calc_ut(self.jd_sunset, swe.SUN)[0] - swe.get_ayanamsa(self.jd_sunset)
+        self.longitude_sun_sunrise = swe.calc_ut(self.jd_sunrise, swe.SUN)[
+            0][0] - swe.get_ayanamsa(self.jd_sunrise)
+        self.longitude_sun_sunset = swe.calc_ut(self.jd_sunset, swe.SUN)[
+            0][0] - swe.get_ayanamsa(self.jd_sunset)
 
         # Each solar month has 30 days. So, divide the longitude by 30 to get the solar month.
-        self.solar_month_sunset = int(1 + floor((self.longitude_sun_sunset % 360) / 30.0))
-        self.solar_month_sunrise = int(1 + floor(((self.longitude_sun_sunrise) % 360) / 30.0))
+        self.solar_month_sunset = int(
+            1 + floor((self.longitude_sun_sunset % 360) / 30.0))
+        self.solar_month_sunrise = int(
+            1 + floor(((self.longitude_sun_sunrise) % 360) / 30.0))
         # if self.solar_month_sunset != self.solar_month_sunrise:
         #   # sankrAnti.
         #   [_m, self.solar_month_end_jd] = temporal.get_angam_data(
@@ -151,7 +164,8 @@ class DailyPanchanga(common.JsonObject):
         muhuurta_length_jd = day_length_jd / (5 * 3)
         import numpy
         # 15 muhUrta-s in a day.
-        muhuurta_starts = numpy.arange(self.jd_sunrise, self.jd_sunset, muhuurta_length_jd)[0:15]
+        muhuurta_starts = numpy.arange(
+            self.jd_sunrise, self.jd_sunset, muhuurta_length_jd)[0:15]
         from jyotisha.panchangam import spatio_temporal
         self.tb_muhuurtas = [spatio_temporal.TbSayanaMuhuurta(
             city=self.city, jd_start=jd_start, jd_end=jd_start + muhuurta_length_jd,
@@ -164,8 +178,10 @@ class DailyPanchanga(common.JsonObject):
         # If solar transition happens before the current sunset but after the previous sunset, then that is taken to be solar day 1. Number of sunsets since the past solar month transition gives the solar day number.
         if not hasattr(self, "jd_sunrise") or self.jd_sunrise is None:
             self.compute_sun_moon_transitions()
-        self.solar_month = get_angam(self.jd_sunset, SOLAR_MONTH, ayanamsha_id=self.ayanamsha_id)
-        target = ((floor(get_angam_float(self.jd_sunset, SOLAR_MONTH, ayanamsha_id=self.ayanamsha_id)) - 1) % 12) + 1
+        self.solar_month = get_angam(
+            self.jd_sunset, SOLAR_MONTH, ayanamsha_id=self.ayanamsha_id)
+        target = ((floor(get_angam_float(self.jd_sunset, SOLAR_MONTH,
+                                         ayanamsha_id=self.ayanamsha_id)) - 1) % 12) + 1
 
         # logging.debug(jd_start)
         # logging.debug(jd_sunset)
@@ -186,10 +202,12 @@ class DailyPanchanga(common.JsonObject):
         if jd_sunset_after_masa_transit > jd_sunrise_after_masa_transit:
             # Masa begins after sunset and before sunrise
             # Therefore Masa 1 is on the day when the sun rises next
-            solar_month_day = floor(self.jd_sunset - jd_sunrise_after_masa_transit) + 1
+            solar_month_day = floor(
+                self.jd_sunset - jd_sunrise_after_masa_transit) + 1
         else:
             # Masa has started before sunset
-            solar_month_day = round(self.jd_sunset - jd_sunset_after_masa_transit) + 1
+            solar_month_day = round(
+                self.jd_sunset - jd_sunset_after_masa_transit) + 1
         self.solar_month_day = solar_month_day
 
     def get_lagna_float(self, jd, offset=0, debug=False):
@@ -204,7 +222,8 @@ class DailyPanchanga(common.JsonObject):
             float lagna
         """
         swe.set_sid_mode(self.ayanamsha_id)
-        lcalc = swe.houses_ex(jd, self.city.latitude, self.city.longitude)[1][0] - swe.get_ayanamsa_ut(jd)
+        lcalc = swe.houses_ex(jd, self.city.latitude, self.city.longitude)[
+            1][0] - swe.get_ayanamsa_ut(jd)
         lcalc = lcalc % 360
 
         if offset == 0:
@@ -252,9 +271,12 @@ class DailyPanchanga(common.JsonObject):
         for lagna in lagna_list:
             # print('---\n', lagna)
             if (debug):
-                logging.debug(('lagna sunrise', self.get_lagna_float(self.jd_sunrise)))
-                logging.debug(('lbrack', self.get_lagna_float(lbrack, int(-lagna))))
-                logging.debug(('rbrack', self.get_lagna_float(rbrack, int(-lagna))))
+                logging.debug(
+                    ('lagna sunrise', self.get_lagna_float(self.jd_sunrise)))
+                logging.debug(
+                    ('lbrack', self.get_lagna_float(lbrack, int(-lagna))))
+                logging.debug(
+                    ('rbrack', self.get_lagna_float(rbrack, int(-lagna))))
 
             lagna_end_time = brentq(self.get_lagna_float, lbrack, rbrack,
                                     args=(-lagna, debug))
@@ -314,6 +336,7 @@ common.update_json_class_index(sys.modules[__name__])
 
 
 if __name__ == '__main__':
-    panchangam = DailyPanchanga.from_city_and_julian_day(city=City('Chennai', '13:05:24', '80:16:12', 'Asia/Calcutta'), julian_day=2457023.27)
+    panchangam = DailyPanchanga.from_city_and_julian_day(city=City(
+        'Chennai', '13:05:24', '80:16:12', 'Asia/Calcutta'), julian_day=2457023.27)
     panchangam.compute_tb_muhuurtas()
     logging.debug(str(panchangam))

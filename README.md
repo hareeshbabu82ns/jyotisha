@@ -46,3 +46,22 @@ Pyswisseph is a thin wrapper around the C++ code.
 
 ## Deployment
 - [api.vedavaapi.org/jyotisha](http://api.vedavaapi.org/jyotisha)
+
+
+## Local Development
+- Clone the repo
+- create and activate pytohon virtualenv
+- initiate and update the submodule for data
+```sh
+$> python3 -m virtualenv venv
+$> source venv/bin/activate
+$> git submodule init
+$> git submodule update --init --recursive
+```
+
+- To run the RestAPI locally
+  - create from 'config_local.json' using template file (root folder)
+  - copy jyotisha/rest_api/run.py to root of the folder
+  - `$> py run.py`
+
+
