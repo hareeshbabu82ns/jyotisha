@@ -64,4 +64,12 @@ $> git submodule update --init --recursive
   - copy jyotisha/rest_api/run.py to root of the folder
   - `$> py run.py`
 
+- Freeze the PIP packages
+```sh
+$> pip freeze --local > requirements.txt
+```
+- Install packages using `requirements.txt`
+```sh
+$> pip install -r requirements.txt
+```
 
